@@ -1,6 +1,6 @@
 # NLog.SignalR
 
-NLog.SignalR is a [NLog](https://github.com/jkowalski/NLog) target for [SignalR](https://github.com/SignalR/SignalR). Allowing you to stream log events from application to client-side JavaScript.
+NLog.SignalR is a [SignalR](https://github.com/SignalR/SignalR) target for [NLog](https://github.com/jkowalski/NLog), allowing you to send log messages straight to a JavaScript client in real-time with SignalR's persistent connections.
 
 ## Getting started
 
