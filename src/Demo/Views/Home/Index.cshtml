@@ -15,7 +15,6 @@
             <tr>
                 <th>Time</th>
                 <th>Level</th>
-                <th>Logger</th>
                 <th>Message</th>
             </tr>
         </thead>
@@ -35,11 +34,12 @@
         var nlog = $.connection.signalRTargetHub;
 
         nlog.logEvent = function (message, logEventInfo) {
-            $("#logTable tbody").prepend("<tr><td>" + logEventInfo.TimeStamp + "</td><td>" + logEventInfo.Level.Name + "</td><td>" + logEventInfo.LoggerName + "</td><td>" + logEventInfo.FormattedMessage + "</td></tr>");
+            $("#logTable tbody").prepend("<tr><td>" + logEventInfo.TimeStamp + "</td><td>" + logEventInfo.Level.Name + "</td><td>" + message + "</td></tr>");
         };
 
         $.connection.hub.start(function () {
             nlog.listen();
+            $("#createLogEntryButton").focus();
         });
 
     })
