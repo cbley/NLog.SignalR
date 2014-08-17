@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.SignalR.IntegrationTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.SignalR.Sample.Web", "NLog.SignalR.Sample.Web\NLog.SignalR.Sample.Web.csproj", "{F69C8EBC-2EB0-442C-8C1A-296CB07B82E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.SignalR.Sample.Command", "NLog.SignalR.Sample.Command\NLog.SignalR.Sample.Command.csproj", "{A3DE386F-99E7-48DD-8454-A1D5A67FC2D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{034E3F7B-03AF-46F4-B25B-3E0CCB46EA59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,8 +35,16 @@ Global
 		{F69C8EBC-2EB0-442C-8C1A-296CB07B82E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F69C8EBC-2EB0-442C-8C1A-296CB07B82E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F69C8EBC-2EB0-442C-8C1A-296CB07B82E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3DE386F-99E7-48DD-8454-A1D5A67FC2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3DE386F-99E7-48DD-8454-A1D5A67FC2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3DE386F-99E7-48DD-8454-A1D5A67FC2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3DE386F-99E7-48DD-8454-A1D5A67FC2D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A3DE386F-99E7-48DD-8454-A1D5A67FC2D9} = {034E3F7B-03AF-46F4-B25B-3E0CCB46EA59}
+		{F69C8EBC-2EB0-442C-8C1A-296CB07B82E8} = {034E3F7B-03AF-46F4-B25B-3E0CCB46EA59}
 	EndGlobalSection
 EndGlobal
