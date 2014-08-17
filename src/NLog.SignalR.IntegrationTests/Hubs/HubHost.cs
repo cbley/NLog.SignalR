@@ -3,7 +3,7 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Hosting;
 using Owin;
 
-namespace NLog.SignalR.IntegrationTests
+namespace NLog.SignalR.IntegrationTests.Hubs
 {
     public class HubHost : IHubHost
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NLog.SignalR.IntegrationTests
+namespace NLog.SignalR.IntegrationTests.Hubs
 {
     public class Test
     {

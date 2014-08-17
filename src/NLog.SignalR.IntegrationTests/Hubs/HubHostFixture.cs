@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace NLog.SignalR.IntegrationTests
+namespace NLog.SignalR.IntegrationTests.Hubs
 {
     public class HubHostFixture
     {

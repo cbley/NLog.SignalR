@@ -1,4 +1,4 @@
-namespace NLog.SignalR.IntegrationTests
+namespace NLog.SignalR.IntegrationTests.Hubs
 {
     public interface IHubHost
     {
