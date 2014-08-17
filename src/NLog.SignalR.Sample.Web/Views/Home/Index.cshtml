@@ -1,6 +1,5 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">>
@@ -47,7 +46,6 @@
     <style>
         .gridStyle {
             border: 1px solid rgb(212,212,212);
-            /*width: 800px;*/ 
             height: 600px
         }
     </style>
@@ -67,7 +65,6 @@
                 var scope = angular.element($("#scope")).scope();
                 scope.changeData(logEvent);
                 scope.$apply();
-                //$("#logTable tbody").prepend("<tr><td>" + logEvent.TimeStamp + "</td><td>" + logEvent.Level + "</td><td>" + logEvent.Message + "</td></tr>");
             };
 
             $.connection.hub.start().done(function () {
