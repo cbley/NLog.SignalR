@@ -54,8 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HubProxyFactory.cs" />
-    <Compile Include="IHubProxyFactory.cs" />
+    <Compile Include="HubProxy.cs" />
     <Compile Include="ILoggingHub.cs" />
     <Compile Include="LogEvent.cs" />
     <Compile Include="SignalRTarget.cs" />

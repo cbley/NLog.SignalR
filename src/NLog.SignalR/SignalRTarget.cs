@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using Microsoft.AspNet.SignalR.Client;
 using NLog.Common;
 using NLog.Config;
 using NLog.Targets;
@@ -22,16 +21,13 @@ namespace NLog.SignalR
         [DefaultValue("Log")]
         public string MethodName { get; set; }
 
-
-        public IHubProxyFactory ProxyFactory { get; set; }
-
-        private IHubProxy _proxy;
+        public readonly HubProxy Proxy;
 
         public SignalRTarget()
         {
             HubName = "LoggingHub";
             MethodName = "Log";
-            ProxyFactory = new HubProxyFactory();
+            Proxy = new HubProxy(this);
         }
 
         protected override void Write(LogEventInfo logEvent)
@@ -46,20 +42,10 @@ namespace NLog.SignalR
 
         private void Log(LogEventInfo logEvent)
         {
-            EnsureProxyExists();
-
-            if (_proxy == null)
-                return;
-            
             var renderedMessage = Layout.Render(logEvent);
             var item = new LogEvent(logEvent, renderedMessage);
-            _proxy.Invoke(MethodName, item);
-        }
 
-        private void EnsureProxyExists()
-        {
-            if (_proxy == null)
-                _proxy = ProxyFactory.Create(Uri, HubName);
+            Proxy.Log(item);
         }
     }
 }

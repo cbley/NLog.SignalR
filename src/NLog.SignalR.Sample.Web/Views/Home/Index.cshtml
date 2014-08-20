@@ -6,7 +6,7 @@
     <h1>NLog.SignalR - Demo</h1>
     
     <div>
-        <button class="btn btn-primary" id="createLogEntryButton">Create Log Entry</button>
+        <button class="btn btn-primary" id="createLogEntryButton" >Create Log Entry</button>
         <hr/>
     </div>
 
@@ -25,16 +25,20 @@
     <script>
         var app = angular.module('myApp', ['ngGrid']);
 
-        app.controller('MyCtrl', function ($scope) {
+        app.controller('MyCtrl', function($scope) {
             $scope.myData = [];
-            $scope.gridOptions = { data: 'myData', 
-                columnDefs: [{ field: 'TimeStamp', displayName: 'Date', width: 225 },
-                             { field: 'Level', displayName: 'Level', width: 75 },
-                             { field: 'Message', cellClass: 'Message', minWidth: 500, maxWidth: 1000 }],
-                sortInfo: { fields: ['TimeStamp'], directions: ['desc'] }
+            $scope.gridOptions = {
+                data: 'myData',
+                columnDefs: [
+                    { field: 'TimeStamp', displayName: 'Date', width: 225 },
+                    { field: 'Level', displayName: 'Level', width: 75 },
+                    { field: 'Message', cellClass: 'Message', minWidth: 500, maxWidth: 1000 }
+                ],
+                sortInfo: { fields: ['TimeStamp'], directions: ['desc'] },
+                afterSelectionChange: function(rowItem, event) { alert(rowItem.entity.Message); }
             };
-            
-            $scope.changeData = function (logEvent) {
+
+            $scope.changeData = function(logEvent) {
                 $scope.myData.push(logEvent);
             };
         });
@@ -45,29 +49,30 @@
     
     <style>
         .gridStyle {
-            border: 1px solid rgb(212,212,212);
+            border: 1px solid rgb(212, 212, 212);
             height: 600px
         }
+
     </style>
 
     <script>
-        $(function () {
+        $(function() {
 
             $.ajaxSetup({ cache: false }); // prevent IE from caching ajax requests
 
-            $("#createLogEntryButton").click(function () {
-                $.getJSON('/Home/AddLogEntry', function () { });
+            $("#createLogEntryButton").click(function() {
+                $.getJSON('/Home/AddLogEntry', function() {});
             });
 
             var nlog = $.connection.loggingHub;
 
-            nlog.client.log = function (logEvent) {
+            nlog.client.log = function(logEvent) {
                 var scope = angular.element($("#scope")).scope();
                 scope.changeData(logEvent);
                 scope.$apply();
             };
 
-            $.connection.hub.start().done(function () {
+            $.connection.hub.start().done(function() {
                 $("#createLogEntryButton").focus();
             });
         })

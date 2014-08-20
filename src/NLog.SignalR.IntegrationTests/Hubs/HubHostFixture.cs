@@ -5,11 +5,24 @@ namespace NLog.SignalR.IntegrationTests.Hubs
     public class HubHostFixture
     {
         private IHubHost _host;
+        public const string BaseUrl = "http://localhost:1234";
+
         [TestFixtureSetUp]
         public void Init()
         {
-            _host = new HubHost();
+            StartHost();
+        }
+
+        protected void StartHost()
+        {
+            _host = new HubHost(BaseUrl);
             _host.Start();
+        }
+
+        protected void StopHost()
+        {
+            _host.Stop();
+            _host = null;
         }
 
         [SetUp]
@@ -21,7 +34,7 @@ namespace NLog.SignalR.IntegrationTests.Hubs
         [TestFixtureTearDown]
         public void Dispose()
         {
-            _host.Stop();
+            StopHost();
         }
     }
 }

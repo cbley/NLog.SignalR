@@ -7,24 +7,30 @@ namespace NLog.SignalR.IntegrationTests.Hubs
 {
     public class HubHost : IHubHost
     {
-        public const string BaseUrl = "http://localhost:1234";
+        private bool _active;
         private readonly Uri _baseUri;
         private IDisposable _webApp;
 
-        public HubHost()
+        public HubHost(string baseUrl)
         {
-            _baseUri = new Uri(BaseUrl);
+            _baseUri = new Uri(baseUrl);
         }
 
         public void Start()
         {
             var url = string.Format("http://+:{0}", _baseUri.Port);
             _webApp = WebApp.Start<Startup>(url);
+            _active = true;
         }
 
         public void Stop()
         {
-            _webApp.Dispose();
+            if (_active)
+            {
+                _webApp.Dispose();
+                _webApp = null;
+                _active = false;
+            }
         }
 
         internal class LoggingHub : Hub<ILoggingHub>
