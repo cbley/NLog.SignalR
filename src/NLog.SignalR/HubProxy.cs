@@ -24,21 +24,44 @@ namespace NLog.SignalR
 
         public void EnsureProxyExists()
         {
-            if (_proxy == null || Connection.State == ConnectionState.Disconnected)
+            if (_proxy == null || Connection == null)
             {
-                try
-                {
-                    Connection = new HubConnection(_target.Uri);
-                    _proxy = Connection.CreateHubProxy(_target.HubName);
-                    Connection.Start().Wait();
+                BeginNewConnection();
+            } 
 
-                    _proxy.Invoke("Notify", Connection.ConnectionId);
-                }
-                catch (Exception ex)
-                {
-                    _proxy = null;
-                }
+            else if (Connection.State == ConnectionState.Disconnected)
+            {
+                StartExistingConnection();
             }
         }
+
+        private void BeginNewConnection()
+        {
+            try
+            {
+                Connection = new HubConnection(_target.Uri);
+                _proxy = Connection.CreateHubProxy(_target.HubName);
+                Connection.Start().Wait();
+
+                _proxy.Invoke("Notify", Connection.ConnectionId);
+            }
+            catch (Exception)
+            {
+                _proxy = null;
+            }
+        }
+
+        private void StartExistingConnection()
+        {
+            try
+            {
+                Connection.Start().Wait();
+            }
+            catch (Exception)
+            {
+                _proxy = null;
+            }
+        }
+
     }
 }

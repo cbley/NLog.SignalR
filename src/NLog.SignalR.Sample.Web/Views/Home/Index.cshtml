@@ -72,7 +72,8 @@
                 scope.$apply();
             };
 
-            $.connection.hub.start().done(function() {
+            nlog.logging = true;
+            $.connection.hub.start().done(function () {
                 $("#createLogEntryButton").focus();
             });
         })
