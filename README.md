@@ -86,13 +86,13 @@ The other way is to simply set up a Hub in your web project using dynamic types.
 
 ## Feedback
 
-Feel free to tweet [@cbley](http://twitter.com/cbley) or [@tmeinershagen](http://twitter.com/tmeinershagen) for questions or comments on the code.  You can also submit a GitHub issue [here](https://github.com/cbley/NLog.SignalR/issues).
+Feel free to tweet [@tmeinershagen](http://twitter.com/tmeinershagen) for questions or comments on the code.  You can also submit a GitHub issue [here](https://github.com/toddmeinershagen/NLog.SignalR/issues).
 
 ## License
 
 The MIT License
 
-Copyright (c) 2012 Christopher Bley, Todd Meinershagen
+Copyright (c) 2014 Todd Meinershagen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

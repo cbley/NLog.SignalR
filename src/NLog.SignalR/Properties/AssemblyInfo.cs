@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NLog.SignalR")]
-[assembly: AssemblyDescription("Custom NLog target for send logs to a SignalR hub.")]
+[assembly: AssemblyDescription("Custom NLog target for sending log events to a SignalR hub.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Christopher Bley, Todd Meinershagen")]
+[assembly: AssemblyCompany("Todd Meinershagen")]
 [assembly: AssemblyProduct("NLog.SignalR")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
