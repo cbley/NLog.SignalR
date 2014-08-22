@@ -1,4 +1,5 @@
 using FluentAssertions;
+using James.Testing;
 using NLog.Config;
 using NLog.SignalR.IntegrationTests.Hubs;
 using NUnit.Framework;
@@ -37,7 +38,7 @@ namespace NLog.SignalR.IntegrationTests
             Logger.Trace(expectedMessage);
             Logger.Error(expectedMessage);
 
-            Wait.Until(t => t.SignalRLogEvents.Count == 2);
+            Wait.Until(() => Test.Current.SignalRLogEvents.Count == 2);
 
             Test.Current.SignalRLogEvents.Should().Contain(x => x.Level == "Trace" && x.Message == expectedMessage);
             Test.Current.SignalRLogEvents.Should().Contain(x => x.Level == "Error" && x.Message == expectedMessage);
@@ -57,13 +58,13 @@ namespace NLog.SignalR.IntegrationTests
             const string expectedMessage = "This is a sample trace message.";
             Logger.Trace(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             StopHub();
 
             Logger.Error(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             Test.Current.SignalRLogEvents.Should().Contain(x => x.Level == "Trace" && x.Message == expectedMessage);
             Test.Current.SignalRLogEvents.Should().NotContain(x => x.Level == "Error" && x.Message == expectedMessage);
@@ -85,14 +86,14 @@ namespace NLog.SignalR.IntegrationTests
             const string expectedMessage = "This is a sample message.";
             Logger.Trace(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             StopHub();
             StartHub();
 
             Logger.Error(expectedMessage);
 
-            Wait.Until(t => t.SignalRLogEvents.Count == 2);
+            Wait.Until(() => Test.Current.SignalRLogEvents.Count == 2);
 
             Test.Current.SignalRLogEvents.Should().Contain(x => x.Level == "Trace" && x.Message == expectedMessage);
             Test.Current.SignalRLogEvents.Should().Contain(x => x.Level == "Error" && x.Message == expectedMessage);

@@ -43,8 +43,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentAssertions.3.1.229\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
-    <Reference Include="James.Testing">
-      <HintPath>..\packages\James.Testing.1.0.4.0\lib\net45\James.Testing.dll</HintPath>
+    <Reference Include="James.Testing, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\James.Testing.1.0.5.0\lib\net45\James.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,7 +115,6 @@
     <Compile Include="given_hub_not_running.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Hubs\Test.cs" />
-    <Compile Include="Wait.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

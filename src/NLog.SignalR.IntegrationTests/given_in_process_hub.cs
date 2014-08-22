@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using FluentAssertions;
+using James.Testing;
 using NLog.Config;
 using NLog.SignalR.IntegrationTests.Hubs;
 using NUnit.Framework;
@@ -40,13 +41,13 @@ namespace NLog.SignalR.IntegrationTests
             Action action1 = () =>
             {
                 Logger.Trace(expectedMessage);
-                Wait.For(1);
+                Wait.For(1).Seconds();
             };
 
             Action action2 = () =>
             {
                 Logger.Error(expectedMessage);
-                Wait.For(1);
+                Wait.For(1).Seconds();
             };
 
             Parallel.Invoke(action1, action2);
@@ -69,7 +70,7 @@ namespace NLog.SignalR.IntegrationTests
             const string expectedMessage = "This is a sample trace message.";
             Logger.Trace(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             Test.Current.SignalRLogEvents.Should().NotContain(x => x.Level == "Trace" && x.Message == expectedMessage);
         }
@@ -89,7 +90,7 @@ namespace NLog.SignalR.IntegrationTests
             const string expectedMessage = "This is a sample trace message.";
             Logger.Trace(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             Test.Current.SignalRLogEvents.Should().NotContain(x => x.Level == "Trace" && x.Message == expectedMessage);
         }
@@ -109,7 +110,7 @@ namespace NLog.SignalR.IntegrationTests
             const string expectedMessage = "This is a sample trace message.";
             Logger.Trace(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             Test.Current.SignalRLogEvents.Should().NotContain(x => x.Level == "Trace" && x.Message == expectedMessage);
         }
@@ -128,13 +129,13 @@ namespace NLog.SignalR.IntegrationTests
             const string expectedMessage = "This is a sample trace message.";
             Logger.Trace(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             target.Proxy.Connection.Stop();
 
             Logger.Error(expectedMessage);
 
-            Wait.For(1);
+            Wait.For(1).Seconds();
 
             Test.Current.SignalRLogEvents.Should().Contain(x => x.Level == "Trace" && x.Message == expectedMessage);
             Test.Current.SignalRLogEvents.Should().Contain(x => x.Level == "Error" && x.Message == expectedMessage);
